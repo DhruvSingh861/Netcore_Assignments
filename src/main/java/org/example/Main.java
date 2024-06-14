@@ -11,12 +11,15 @@ public class Main {
         Connection conn= DriverManager.getConnection(jdbcURL,userName,password);
         System.out.println(conn.isClosed());
         Long s=System.currentTimeMillis();
-        for(int i=0;i<10000;i++){
-            PreparedStatement ps=conn.prepareStatement("insert into employee(name, designation) values(?,?)");
+        PreparedStatement ps=conn.prepareStatement("insert into employee(name, designation) values(?,?)");
+        for(int i=0;i<10000000;i++){
             ps.setString(1,"Dhruv");
             ps.setString(2,"ASE"+i);
-            ps.executeUpdate();
+            ps.addBatch();
+            ps.clearParameters();
         }
+        ps.executeBatch();
+
         Long e=System.currentTimeMillis();
         System.out.println(((double)(e-s)/1000)+" sec");
         System.out.println("done");
