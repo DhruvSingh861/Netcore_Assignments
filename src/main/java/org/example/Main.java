@@ -2,19 +2,23 @@ package org.example;
 
 import redis.clients.jedis.Jedis;
 
+import java.io.*;
+import java.sql.SQLOutput;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
 
         //connected to Redis running on localhost default port (TCP Port 6379).
-        Jedis jedis=new Jedis();
-        jedis.set("name", "Dhruv");
+        Jedis jedis=new Jedis("localhost",6379);
+        jedis.set("name", "Dhruvvv");
         jedis.set("surname", "Singh");
+
         String cachedResponse = jedis.get("name");
         System.out.println(cachedResponse);
 
-        jedis.del("address");
+        System.out.println(jedis.del("address"));
 
         //pushing data into List
         jedis.lpush("address","316");
@@ -42,10 +46,10 @@ public class Main {
         System.out.println(jedis.hget("Employe:1","Company"));
         System.out.println(jedis.hget("Employe:1","role"));
 
-
-
-
-
-
+        //redis Set
+        jedis.sadd("set","java", "python", "java", "SQL");
+        Iterator<String> it=jedis.smembers("set").iterator();
+        System.out.printf("\nSet Elements->\n");
+        while(it.hasNext()) System.out.println(it.next());
     }
 }
