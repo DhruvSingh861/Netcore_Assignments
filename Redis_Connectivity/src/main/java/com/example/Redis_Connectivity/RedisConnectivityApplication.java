@@ -14,12 +14,6 @@ public class RedisConnectivityApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RedisConnectivityApplication.class, args);
-
-		Jedis jedis=new Jedis();
-		Map<String,String> employee=new HashMap();
-		employee.put("name",jedis.hget("Employee","name"));
-		employee.put("city",jedis.hget("Employee","city"));
-		System.out.println(new Gson().toJson(employee));
 	}
 
 }
