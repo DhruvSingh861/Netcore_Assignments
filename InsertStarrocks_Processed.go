@@ -26,7 +26,7 @@ func main() {
 	fmt.Println(result)
 	fmt.Println(err)
 
-	db, err := sqlx.Connect("mysql", "root:@tcp(10.160.0.6:9030)/demo")
+	db, err := sqlx.Connect("mysql", "root:@tcp(127.0.0.1:9030)/email")
 	if err != nil {
 		log.Fatalf("Error opening database: %v", err)
 	}
