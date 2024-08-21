@@ -62,7 +62,7 @@ func main() {
 	schStatus := rand.Intn(3)
 	client.Del("events")
 
-	for i := 0; i <= 10000; i++ {
+	for i := 0; i <= 10000000; i++ {
 		entry := fmt.Sprintf("%d|||%d|||%s|||%s|||%s|||%s|||%s|||%s|||%s|||%s|||%s|||%d|||%s|||%s|||%s|||%s|||%d|||%s|||%s|||%s|||%s|||%d",
 			clientID, trID, randomDate(), randomDateTime(), batchID, customData, fromAddress, fromAddressID,
 			injType, randomDateTime(), misc1, msgSize, rcptEmail, rcptID, rdom, randomDateTime(), schStatus,

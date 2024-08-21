@@ -16,7 +16,7 @@ import (
 var wg sync.WaitGroup
 
 func main() {
-	var ROWS int64 = 10
+	var ROWS int64 = 1000000
 	client := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "",
