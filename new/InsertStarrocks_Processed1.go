@@ -26,7 +26,7 @@ func main() {
 	fmt.Println(result)
 	fmt.Println(err)
 
-	db, err := sqlx.Connect("mysql", "root:@tcp(127.0.0.1:9030)/demo1")
+	db, err := sqlx.Connect("mysql", "root:@tcp(10.160.0.6:9030)/demo1")
 	if err != nil {
 		log.Fatalf("Error opening database: %v", err)
 	}
@@ -58,7 +58,6 @@ func main() {
 		msgSize, _ := strconv.Atoi(parts[6])
 		remarks := parts[7]
 		tokenTo := parts[8]
-		trash1 := part[9]
 		msgType := parts[10]
 		tags := parts[11]
 		messageID := parts[12]
