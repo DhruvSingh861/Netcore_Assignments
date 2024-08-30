@@ -39,6 +39,9 @@ func main() {
 	fmt.Println("Successfully connected to the database")
 
 	events, err := client.LRange("events", 0, int64(ROWS)).Result()
+
+	fmt.Println(events)
+
 	if err != nil {
 		log.Fatalf("Error fetching data from Redis: %v", err)
 	}
@@ -51,17 +54,17 @@ func main() {
 		parts := strings.Split(line, "|||")
 		clientID, _ := strconv.Atoi(parts[0])
 		trID, _ := strconv.Atoi(parts[1])
-		adate := parts[2]
-		timestamp := parts[3]
-		rcptEmail := parts[4]
-		fromAddress := parts[5]
-		msgSize, _ := strconv.Atoi(parts[6])
-		remarks := parts[7]
-		tokenTo := parts[8]
-		msgType := parts[10]
-		tags := parts[11]
-		messageID := parts[12]
-		openType, _ := strconv.Atoi(parts[13])
+		adate := parts[3]
+		timestamp := parts[4]
+		rcptEmail := parts[5]
+		fromAddress := parts[6]
+		msgSize, _ := strconv.Atoi(parts[7])
+		remarks := parts[8]
+		tokenTo := parts[9]
+		msgType := parts[11]
+		tags := parts[12]
+		messageID := parts[13]
+		openType, _ := strconv.Atoi(parts[14])
 
 		value := fmt.Sprintf("('%d','%d','%s','%s','%s','%s','%d','%s','%s','%s','%s','%s','%d')",
 			clientID, trID, adate, timestamp, rcptEmail, fromAddress, msgSize, remarks, tokenTo, msgType,
